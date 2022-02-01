@@ -15,4 +15,3 @@ spec:
   values:
     tls: external
     hostname: rancher.ingtra.net
-    addLocal: "false"
