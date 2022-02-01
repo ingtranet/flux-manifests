@@ -15,3 +15,4 @@ spec:
   values:
     tls: external
     hostname: rancher.ingtra.net
+    replicas: 1
