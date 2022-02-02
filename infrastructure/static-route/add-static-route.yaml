@@ -33,7 +33,7 @@ spec:
                   ip route add ${_route} via ${_gateway};
                 done;
                 sleep 60;
-              done
+              done;
           securityContext:
             capabilities:
               add:
