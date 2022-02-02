@@ -20,11 +20,9 @@ spec:
           args:
           - >
               _gateway="192.168.140.247 dev eth0";
-              cat > routes.txt <<__EOF
-              172.21.0.0/16
-              172.22.0.0/16
-              172.23.0.0/16
-              __EOF;
+              echo "172.21.0.0/16" > routes.txt;
+              echo "172.22.0.0/16" >> routes.txt;
+              echo "172.23.0.0/16" >> routes.txt;
               while true;
               do
                 for _route in `cat routes.txt | awk '{print $1;}'`; do
