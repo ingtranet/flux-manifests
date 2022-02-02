@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: add-static-route
+spec:
+  template:
+    metadata:
+      name: add-static-route
+      labels:
+        name: add-static-route
+    spec:
+      serviceAccountName: add-static-routes
+      hostNetwork: true
+      containers:
+        - name: add-static-route
+          image: ibmcase/kubectl
+          imagePullPolicy: Always
+          command: [ "/bin/bash", "-c" ]
+          args:
+          - >
+              _gateway="192.168.140.247 dev eth0";
+              cat > routes.txt << __EOF
+              172.21.0.0/16
+              172.22.0.0/16
+              172.23.0.0/16
+              __EOF
+              while true;
+              do
+                for _route in `cat routes.txt | awk '{print $1;}'`; do
+                  [ -z "`ip route show | grep ${_route} | grep ${_gateway}`" ] || continue;
+                  echo "Adding ${_route} via ${_gateway} ...";
+                  ip route add ${_route} via ${_gateway};
+                done;
+                sleep 60;
+              done
+          securityContext:
+            capabilities:
+              add:
+              - NET_ADMIN
