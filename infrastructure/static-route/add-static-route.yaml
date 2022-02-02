@@ -11,7 +11,6 @@ spec:
       labels:
         name: add-static-route
     spec:
-      serviceAccountName: add-static-routes
       hostNetwork: true
       containers:
         - name: add-static-route
