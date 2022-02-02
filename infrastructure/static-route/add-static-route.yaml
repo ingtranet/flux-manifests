@@ -24,7 +24,7 @@ spec:
               172.21.0.0/16
               172.22.0.0/16
               172.23.0.0/16
-              __EOF
+              __EOF;
               while true;
               do
                 for _route in `cat routes.txt | awk '{print $1;}'`; do
