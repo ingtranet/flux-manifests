@@ -20,7 +20,7 @@ spec:
           args:
           - >
               _gateway="192.168.140.247 dev eth0";
-              cat > routes.txt << __EOF
+              cat > routes.txt <<__EOF
               172.21.0.0/16
               172.22.0.0/16
               172.23.0.0/16
