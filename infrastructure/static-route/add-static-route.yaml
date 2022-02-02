@@ -3,9 +3,11 @@ kind: DaemonSet
 metadata:
   name: add-static-route
 spec:
+  selector:
+    matchLabels:
+      name: add-static-route
   template:
     metadata:
-      name: add-static-route
       labels:
         name: add-static-route
     spec:
