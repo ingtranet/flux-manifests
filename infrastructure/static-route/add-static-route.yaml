@@ -27,7 +27,7 @@ spec:
               while true;
               do
                 for _route in `cat routes.txt | awk '{print $1;}'`; do
-                  [ -z "`ip route show | grep ${_route} | grep ${_gateway}`" ] || continue;
+                  [ -z "`ip route show | grep ${_route}`" ] || continue;
                   echo "Adding ${_route} via ${_gateway} ...";
                   ip route add ${_route} via ${_gateway};
                 done;
